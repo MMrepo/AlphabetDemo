@@ -1,25 +1,21 @@
 //
-//  ViewController.swift
+//  AnimationsViewControler.swift
 //  Alphabet
 //
-//  Created by Mateusz Małek on 23.01.2018.
+//  Created by Mateusz Małek on 24.01.2018.
 //  Copyright © 2018 Mateusz Małek. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class AnimationsViewControler: UIViewController {
     
-    @IBOutlet weak var colorButton: UIButton!
     let textView = AlpahetText()
     public var textColor: UIColor = .black {
         didSet {
-            self.colorButton.backgroundColor = textColor
             textView.textColor = textColor
         }
     }
-    @IBOutlet weak var contourSlide: UISlider!
-    @IBOutlet weak var radiusSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,34 +29,10 @@ class ViewController: UIViewController {
         textView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant:-20).isActive = true
         textView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant:20).isActive = true
         textView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant:-20).isActive = true
-
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    @IBAction func handleContourSlider(_ sender: UISlider) {
-        textView.strokeEnd = CGFloat(sender.value)
-    }
     
-    @IBAction func handleRadiusSlider(_ sender: UISlider) {
-        textView.shadowRadius = CGFloat(sender.value)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func handleColorButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ChooseColorViewController") as! ChooseColorViewController
-
-        controller.color = self.textColor
-        controller.senderViewController = self
-        self.present(controller, animated: true, completion: nil)
-    }
-
-    @IBAction func handleLineWidthSlider(_ sender: UISlider) {
-        self.textView.lineWidth = CGFloat(sender.value)
-    }
     @IBAction func handleTextField(_ sender: UITextField) {
         self.textView.stringToPrint = sender.text ?? ""
     }
@@ -72,8 +44,30 @@ class ViewController: UIViewController {
     @IBAction func handleBuildTextButtonTapped(_ sender: UIButton) {
         self.view.endEditing(true)
     }
-    @IBAction func RandomizeLettersPositionButton(_ sender: UIButton) {
-        self.textView.randomizePosition()
+    
+    @IBAction func startAnimation1(_ sender: UIButton) {
+        textView.startAnimation1(withDelay: 0.1)
     }
+    @IBAction func startAnimation2(_ sender: UIButton) {
+        textView.startAnimation2(withDelay: 0.1)
+
+    }
+    @IBAction func startAnimation3(_ sender: UIButton) {
+        textView.startAnimation3(withDelay: 0.1)
+
+    }
+    @IBAction func startAnimation4(_ sender: UIButton) {
+        textView.startAnimation4(withDelay: 0.1)
+
+    }
+    @IBAction func startAnimation5(_ sender: UIButton) {
+        textView.startAnimation5(withDelay: 0.1)
+
+    }
+    @IBAction func startAnimation6(_ sender: UIButton) {
+        textView.startAnimation6(withDelay: 0.1)
+
+    }
+    
 }
 
